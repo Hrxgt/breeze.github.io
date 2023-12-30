@@ -91,7 +91,7 @@ async function main() {
 
     // attach event listener to each song
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach(e => {
-        e.addEventListener("click", element => {
+        e.addEventListener("", element => {
             const songName = e.querySelector('.info').firstElementChild.innerHTML;
             const artist = e.querySelector('.info').lastElementChild.innerHTML;
     
@@ -103,6 +103,16 @@ async function main() {
 
     // attach event listener to play next and previous
     play.addEventListener('click',()=>{
+        if (currentSong.paused){
+            currentSong.play()
+            play.src="player.svg"
+        }
+        else{
+            currentSong.pause()
+            play.src = "pause.svg"
+        }
+    })
+    play.addEventListener('touchstart',()=>{
         if (currentSong.paused){
             currentSong.play()
             play.src="player.svg"
@@ -128,6 +138,11 @@ async function main() {
         document.querySelector(".circle").style.left = percent +'%';
         currentSong.currentTime = (currentSong.duration)*percent/100
     })
+    document.querySelector('.seekbar').addEventListener('touchstart',(e)=>{
+        let percent = (e.offsetX/e.target.getBoundingClientRect().width)*100
+        document.querySelector(".circle").style.left = percent +'%';
+        currentSong.currentTime = (currentSong.duration)*percent/100
+    })
 
     // event listner for hamburger
 
@@ -136,8 +151,17 @@ async function main() {
         document.querySelector('.left').style.position= "fixed"
         document.querySelector('.right').style.opacity= "0"
     })
+    document.querySelector('.hamburger').addEventListener('touchstart',()=>{
+        document.querySelector('.left').style.left= "0"
+        document.querySelector('.left').style.position= "fixed"
+        document.querySelector('.right').style.opacity= "0"
+    })
 
     document.querySelector('.close').addEventListener('click',()=>{
+        document.querySelector('.left').style.left= "-100%"
+        document.querySelector('.right').style.opacity= "100"
+    })
+    document.querySelector('.close').addEventListener('touchstart',()=>{
         document.querySelector('.left').style.left= "-100%"
         document.querySelector('.right').style.opacity= "100"
     })
@@ -164,9 +188,28 @@ async function main() {
         playMusic(newSong, name);
     
     });
+    previous.addEventListener("touchstart", () => {
+        let current_index = (songs.indexOf(currentSong.src)) - 1; 
+        if (current_index < 0) {
+            current_index = songs.length - 1;
+        }  
+        newSong = songs[current_index];
+        let name = extractSongName(newSong); 
+        playMusic(newSong, name);
+    
+    });
     
     }
     next.addEventListener("click",()=>{
+        let current_index = (songs.indexOf(currentSong.src)) + 1;
+        if (current_index >= songs.length) {
+            current_index = 0;
+        }
+        newSong = songs[current_index];
+        let name = extractSongName(newSong);
+        playMusic(newSong, name);
+    })
+    next.addEventListener("touchstart",()=>{
         let current_index = (songs.indexOf(currentSong.src)) + 1;
         if (current_index >= songs.length) {
             current_index = 0;

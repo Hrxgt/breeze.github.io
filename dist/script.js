@@ -1,4 +1,4 @@
-alert("Under Construction");
+// alert("Under Construction");
 let currentSong = new Audio();
 let songs;
 
@@ -168,7 +168,7 @@ async function main() {
     }
     next.addEventListener("click",()=>{
         let current_index = (songs.indexOf(currentSong.src)) + 1;
-        if (current_index > songs.length) {
+        if (current_index >= songs.length) {
             current_index = 0;
         }
         newSong = songs[current_index];

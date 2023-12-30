@@ -78,7 +78,7 @@ async function getSongs(folder) {
 
 
 async function main() {
-    // list of songs
+    // list of songs default
     songs = await getSongs();
     console.log(songs);
     displaySongs();
@@ -86,26 +86,19 @@ async function main() {
         flag=false;
         displaySongs();
     });
-
-    
-
+    // card1
     document.querySelector('.card1').addEventListener('click', async () => {
         try {
-            // Retrieve songs based on artist
             artistSongs = await getSongs('arijit');
 
-            // Do something with the artistSongs, for example, display them
             console.log(artistSongs);
 
-            // Note: You might want to update your UI or perform some action based on the retrieved songs
         } catch (error) {
             console.error('Error fetching artist songs:', error);
         }
         flag = true;
-        displaySongs(); // No need to pass artistSongs, it's available in the scope
+        displaySongs(); 
     });
-
-    // Add event listeners for other cards as needed
 }
 
 function displaySongs() {
@@ -224,18 +217,18 @@ main();
     // })
    
 
-    // // event listner for hamburger
+    // event listner for hamburger
 
-    // document.querySelector('.hamburger').addEventListener('click',()=>{
-    //     document.querySelector('.left').style.left= "0"
-    //     document.querySelector('.left').style.position= "fixed"
-    //     document.querySelector('.right').style.opacity= "0"
-    // })
+    document.querySelector('.hamburger').addEventListener('click',()=>{
+        document.querySelector('.left').style.left= "0"
+        document.querySelector('.left').style.position= "fixed"
+        document.querySelector('.right').style.opacity= "0"
+    })
    
-    // document.querySelector('.close').addEventListener('click',()=>{
-    //     document.querySelector('.left').style.left= "-100%"
-    //     document.querySelector('.right').style.opacity= "100"
-    // })
+    document.querySelector('.close').addEventListener('click',()=>{
+        document.querySelector('.left').style.left= "-100%"
+        document.querySelector('.right').style.opacity= "100"
+    })
   
     // // extract songname by url
 

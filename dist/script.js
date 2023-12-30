@@ -91,7 +91,15 @@ async function main() {
 
     // attach event listener to each song
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach(e => {
-        e.addEventListener("", element => {
+        e.addEventListener("click", element => {
+            const songName = e.querySelector('.info').firstElementChild.innerHTML;
+            const artist = e.querySelector('.info').lastElementChild.innerHTML;
+    
+            let songUrl = `http://127.0.0.1:5500/dist/songs/${songName}-${artist}.mp3`;
+            console.log(songUrl);
+            playMusic(songUrl,songName);
+        });
+        e.addEventListener("touchstart", element => {
             const songName = e.querySelector('.info').firstElementChild.innerHTML;
             const artist = e.querySelector('.info').lastElementChild.innerHTML;
     
@@ -218,7 +226,6 @@ async function main() {
         let name = extractSongName(newSong);
         playMusic(newSong, name);
     })
-
   
     
 

@@ -45,12 +45,18 @@ async function getSongs() {
 const playMusic = (track,songname)=>{
    
     currentSong.src = track
-    currentSong.play()
-    play.src="player.svg"
-    document.querySelector('.songinfo').innerHTML=songname
-    
-    
+
+    // Use the 'canplay' event to ensure the audio is ready before playing
+    currentSong.addEventListener('canplay', function onCanPlay() {
+        currentSong.play();
+        currentSong.removeEventListener('canplay', onCanPlay); // Remove the event listener to avoid multiple bindings
+    });
+
+    play.src = "player.svg";
+    document.querySelector('.songinfo').innerHTML = songname;
 }
+
+
 
 async function main() {
    

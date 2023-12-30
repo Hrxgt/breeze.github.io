@@ -219,13 +219,13 @@ main();
 
     // event listner for hamburger
 
-    document.querySelector('.hamburger').addEventListener('click',()=>{
+    document.querySelector('.hamburger').addEventListener('touchend',()=>{
         document.querySelector('.left').style.left= "0"
         document.querySelector('.left').style.position= "fixed"
         document.querySelector('.right').style.opacity= "0"
     })
    
-    document.querySelector('.close').addEventListener('click',()=>{
+    document.querySelector('.close').addEventListener('touchend',()=>{
         document.querySelector('.left').style.left= "-100%"
         document.querySelector('.right').style.opacity= "100"
     })

@@ -99,16 +99,7 @@ async function main() {
             console.log(songUrl);
             playMusic(songUrl,songName);
         });
-        e.addEventListener("touchstart", element => {
-            const songName = e.querySelector('.info').firstElementChild.innerHTML;
-            const artist = e.querySelector('.info').lastElementChild.innerHTML;
-    
-            let songUrl = `http://127.0.0.1:5500/dist/songs/${songName}-${artist}.mp3`;
-            console.log(songUrl);
-            playMusic(songUrl,songName);
-        });
-    });
-
+   
     // attach event listener to play next and previous
     play.addEventListener('click',()=>{
         if (currentSong.paused){
@@ -120,16 +111,7 @@ async function main() {
             play.src = "pause.svg"
         }
     })
-    play.addEventListener('touchstart',()=>{
-        if (currentSong.paused){
-            currentSong.play()
-            play.src="player.svg"
-        }
-        else{
-            currentSong.pause()
-            play.src = "pause.svg"
-        }
-    })
+   
 
     // time update
 
@@ -146,11 +128,7 @@ async function main() {
         document.querySelector(".circle").style.left = percent +'%';
         currentSong.currentTime = (currentSong.duration)*percent/100
     })
-    document.querySelector('.seekbar').addEventListener('touchstart',(e)=>{
-        let percent = (e.offsetX/e.target.getBoundingClientRect().width)*100
-        document.querySelector(".circle").style.left = percent +'%';
-        currentSong.currentTime = (currentSong.duration)*percent/100
-    })
+   
 
     // event listner for hamburger
 
@@ -159,20 +137,13 @@ async function main() {
         document.querySelector('.left').style.position= "fixed"
         document.querySelector('.right').style.opacity= "0"
     })
-    document.querySelector('.hamburger').addEventListener('touchstart',()=>{
-        document.querySelector('.left').style.left= "0"
-        document.querySelector('.left').style.position= "fixed"
-        document.querySelector('.right').style.opacity= "0"
-    })
+   
 
     document.querySelector('.close').addEventListener('click',()=>{
         document.querySelector('.left').style.left= "-100%"
         document.querySelector('.right').style.opacity= "100"
     })
-    document.querySelector('.close').addEventListener('touchstart',()=>{
-        document.querySelector('.left').style.left= "-100%"
-        document.querySelector('.right').style.opacity= "100"
-    })
+   
 
     // extract songname by url
 
@@ -196,16 +167,7 @@ async function main() {
         playMusic(newSong, name);
     
     });
-    previous.addEventListener("touchstart", () => {
-        let current_index = (songs.indexOf(currentSong.src)) - 1; 
-        if (current_index < 0) {
-            current_index = songs.length - 1;
-        }  
-        newSong = songs[current_index];
-        let name = extractSongName(newSong); 
-        playMusic(newSong, name);
-    
-    });
+   
     
     }
     next.addEventListener("click",()=>{
@@ -217,15 +179,7 @@ async function main() {
         let name = extractSongName(newSong);
         playMusic(newSong, name);
     })
-    next.addEventListener("touchstart",()=>{
-        let current_index = (songs.indexOf(currentSong.src)) + 1;
-        if (current_index >= songs.length) {
-            current_index = 0;
-        }
-        newSong = songs[current_index];
-        let name = extractSongName(newSong);
-        playMusic(newSong, name);
-    })
+ 
   
     
 

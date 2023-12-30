@@ -99,7 +99,9 @@ async function main() {
             console.log(songUrl);
             playMusic(songUrl,songName);
         });
-   
+       
+    });
+
     // attach event listener to play next and previous
     play.addEventListener('click',()=>{
         if (currentSong.paused){
@@ -111,7 +113,7 @@ async function main() {
             play.src = "pause.svg"
         }
     })
-   
+    
 
     // time update
 
@@ -138,13 +140,11 @@ async function main() {
         document.querySelector('.right').style.opacity= "0"
     })
    
-
     document.querySelector('.close').addEventListener('click',()=>{
         document.querySelector('.left').style.left= "-100%"
         document.querySelector('.right').style.opacity= "100"
     })
-   
-
+  
     // extract songname by url
 
     function extractSongName(songUrl) {
@@ -179,7 +179,7 @@ async function main() {
         let name = extractSongName(newSong);
         playMusic(newSong, name);
     })
- 
+   
   
     
 

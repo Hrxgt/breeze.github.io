@@ -46,14 +46,14 @@ const playMusic = (track,songname)=>{
    
     currentSong.src = track
 
-    // Use the 'canplay' event to ensure the audio is ready before playing
-    currentSong.addEventListener('canplay', function onCanPlay() {
-        currentSong.play();
-        currentSong.removeEventListener('canplay', onCanPlay); // Remove the event listener to avoid multiple bindings
-    });
+   // Use the 'loadedmetadata' event to ensure the metadata is loaded before playing
+   currentSong.addEventListener('loadedmetadata', function onLoadedMetadata() {
+    currentSong.play();
+    currentSong.removeEventListener('loadedmetadata', onLoadedMetadata); // Remove the event listener to avoid multiple bindings
+});
 
-    play.src = "player.svg";
-    document.querySelector('.songinfo').innerHTML = songname;
+play.src = "player.svg";
+document.querySelector('.songinfo').innerHTML = songname;
 }
 
 

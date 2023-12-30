@@ -81,13 +81,7 @@ async function main() {
             </li>`;
     }
     
-    if (songs.length > 0) {
-        currentSong.src = songs[0];
-        // Update UI accordingly, e.g., show song name
-        let defaultSongName = extractSongName(songs[0]);
-        document.querySelector('.songinfo').innerHTML = defaultSongName;
-        // You may also update other UI elements here
-    }
+    
 
     // attach event listener to each song
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach(e => {

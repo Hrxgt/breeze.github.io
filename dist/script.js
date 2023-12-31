@@ -80,13 +80,6 @@ async function main() {
             </li>`;
     }
 
-    if (songs.length > 0) {
-        currentSong.src = songs[0];
-        // Update UI accordingly, e.g., show song name
-        let defaultSongName = extractSongName(songs[0]);
-        document.querySelector('.songinfo').innerHTML = defaultSongName;
-        // You may also update other UI elements here
-    }
 
     // attach event listener to each song
     Array.from(document.querySelector('.songlist').getElementsByTagName('li')).forEach(e => {
@@ -130,27 +123,24 @@ async function main() {
 
     // event listner for hamburger
 
-    // document.querySelector('.hamburger').addEventListener('click',()=>{
-    //     document.querySelector('.left').style.left= "0"
-    //     document.querySelector('.left').style.position= "fixed"
-    //     document.querySelector('.right').style.opacity= "0"
-    // })
+        // Add the event listeners for both click and touchstart events
+    document.querySelector('.hamburger').addEventListener('click', toggleSidebar);
+    document.querySelector('.hamburger').addEventListener('touchstart', toggleSidebar);
 
-    // document.querySelector('.close').addEventListener('click',()=>{
-    //     document.querySelector('.left').style.left= "-100%"
-    //     document.querySelector('.right').style.opacity= "100"
-    // })
-    document.querySelector('.hamburger').addEventListener('touchstart',()=>{
-        document.querySelector('.left').style.left= "0"
-        document.querySelector('.left').style.position= "fixed"
-        document.querySelector('.right').style.opacity= "0"
-        console.log("clicked")        
-    })
-   
-    document.querySelector('.close').addEventListener('touchstart',()=>{
-        document.querySelector('.left').style.left= "-100%"
-        document.querySelector('.right').style.opacity= "100"
-    })
+    document.querySelector('.close').addEventListener('click', closeSidebar);
+    document.querySelector('.close').addEventListener('touchstart', closeSidebar);
+
+    // Create separate functions for handling the events
+    function toggleSidebar() {
+        document.querySelector('.left').style.left = "0";
+        document.querySelector('.left').style.position = "fixed";
+        document.querySelector('.right').style.opacity = "0";
+    }
+
+    function closeSidebar() {
+        document.querySelector('.left').style.left = "-100%";
+        document.querySelector('.right').style.opacity = "100";
+    }
 
     // extract songname by url
 

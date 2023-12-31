@@ -22,43 +22,7 @@ function formatTime(seconds) {
     return formattedTime;
 }
 // Add the event listeners for both click and touchstart events
-document.querySelector('.hamburger').addEventListener('click', toggleSidebar);
-document.querySelector('.hamburger').addEventListener('touchstart', toggleSidebar);
 
-document.querySelector('.close').addEventListener('click', closeSidebar);
-document.querySelector('.close').addEventListener('touchstart', closeSidebar);
-
-// Create separate functions for handling the events
-function toggleSidebar() {
-    document.querySelector('.left').style.left = "0";
-    document.querySelector('.left').style.position = "fixed";
-    document.querySelector('.right').style.opacity = "0";
-}
-
-function closeSidebar() {
-    document.querySelector('.left').style.left = "-100%";
-    document.querySelector('.right').style.opacity = "100";
-}
-// event listner for back and next
-previous.addEventListener("click", () => {
-    let current_index = (songs.indexOf(currentSong.src)) - 1; 
-    if (current_index < 0) {
-        current_index = songs.length - 1;
-    }  
-    newSong = songs[current_index];
-    let name = extractSongName(newSong); 
-    playMusic(newSong, name);
-
-});
-next.addEventListener("click",()=>{
-    let current_index = (songs.indexOf(currentSong.src)) + 1;
-    if (current_index > songs.length) {
-        current_index = 0;
-    }
-    newSong = songs[current_index];
-    let name = extractSongName(newSong);
-    playMusic(newSong, name);
-})
 
 
 
@@ -76,6 +40,43 @@ async function getSongs() {
             songs.push(element.href);
         }
     }
+    document.querySelector('.hamburger').addEventListener('click', toggleSidebar);
+    document.querySelector('.hamburger').addEventListener('touchstart', toggleSidebar);
+    
+    document.querySelector('.close').addEventListener('click', closeSidebar);
+    document.querySelector('.close').addEventListener('touchstart', closeSidebar);
+    
+    // Create separate functions for handling the events
+    function toggleSidebar() {
+        document.querySelector('.left').style.left = "0";
+        document.querySelector('.left').style.position = "fixed";
+        document.querySelector('.right').style.opacity = "0";
+    }
+    
+    function closeSidebar() {
+        document.querySelector('.left').style.left = "-100%";
+        document.querySelector('.right').style.opacity = "100";
+    }
+    // event listner for back and next
+    previous.addEventListener("click", () => {
+        let current_index = (songs.indexOf(currentSong.src)) - 1; 
+        if (current_index < 0) {
+            current_index = songs.length - 1;
+        }  
+        newSong = songs[current_index];
+        let name = extractSongName(newSong); 
+        playMusic(newSong, name);
+    
+    });
+    next.addEventListener("click",()=>{
+        let current_index = (songs.indexOf(currentSong.src)) + 1;
+        if (current_index > songs.length) {
+            current_index = 0;
+        }
+        newSong = songs[current_index];
+        let name = extractSongName(newSong);
+        playMusic(newSong, name);
+    })
     return songs;
 }
 

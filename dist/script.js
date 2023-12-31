@@ -123,24 +123,7 @@ async function main() {
 
     // event listner for hamburger
 
-        // Add the event listeners for both click and touchstart events
-    document.querySelector('.hamburger').addEventListener('click', toggleSidebar);
-    document.querySelector('.hamburger').addEventListener('touchstart', toggleSidebar);
 
-    document.querySelector('.close').addEventListener('click', closeSidebar);
-    document.querySelector('.close').addEventListener('touchstart', closeSidebar);
-
-    // Create separate functions for handling the events
-    function toggleSidebar() {
-        document.querySelector('.left').style.left = "0";
-        document.querySelector('.left').style.position = "fixed";
-        document.querySelector('.right').style.opacity = "0";
-    }
-
-    function closeSidebar() {
-        document.querySelector('.left').style.left = "-100%";
-        document.querySelector('.right').style.opacity = "100";
-    }
 
     // extract songname by url
 
@@ -164,8 +147,6 @@ async function main() {
         playMusic(newSong, name);
 
     });
-
-    }
     next.addEventListener("click",()=>{
         let current_index = (songs.indexOf(currentSong.src)) + 1;
         if (current_index > songs.length) {
@@ -176,10 +157,29 @@ async function main() {
         playMusic(newSong, name);
     })
 
+    }
+   
+
 
 
 
 main();
 
-
-  
+        // Add the event listeners for both click and touchstart events
+        document.querySelector('.hamburger').addEventListener('click', toggleSidebar);
+        document.querySelector('.hamburger').addEventListener('touchstart', toggleSidebar);
+    
+        document.querySelector('.close').addEventListener('click', closeSidebar);
+        document.querySelector('.close').addEventListener('touchstart', closeSidebar);
+    
+        // Create separate functions for handling the events
+        function toggleSidebar() {
+            document.querySelector('.left').style.left = "0";
+            document.querySelector('.left').style.position = "fixed";
+            document.querySelector('.right').style.opacity = "0";
+        }
+    
+        function closeSidebar() {
+            document.querySelector('.left').style.left = "-100%";
+            document.querySelector('.right').style.opacity = "100";
+        }

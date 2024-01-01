@@ -25,21 +25,32 @@ function formatTime(seconds) {
 
 
 async function getSongs() {
-    let response = await fetch("/dist/songs");
-    let textResponse = await response.text();
-    let div = document.createElement('div');
-    div.innerHTML = textResponse;
-    let as = div.getElementsByTagName('a');
-    let songs = [];
-
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith('.mp3')) {
-            songs.push(element.href);
+    try {
+        let response = await fetch("/dist/songs");
+        
+        if (!response.ok) {
+            throw new Error(`Failed to fetch songs. Status: ${response.status}`);
         }
+
+        let textResponse = await response.text();
+        let div = document.createElement('div');
+        div.innerHTML = textResponse;
+        let as = div.getElementsByTagName('a');
+        let songs = [];
+
+        for (let index = 0; index < as.length; index++) {
+            const element = as[index];
+            if (element.href.endsWith('.mp3')) {
+                songs.push(element.href);
+            }
+        }
+        return songs;
+    } catch (error) {
+        console.error("Error fetching songs:", error);
+        return []; // Return an empty array or handle the error as needed
     }
-    return songs;
 }
+
 
 const playMusic = (track,songname)=>{
 

@@ -25,7 +25,7 @@ function formatTime(seconds) {
 
 
 async function getSongs() {
-    let response = await fetch("http://127.0.0.1:5500/dist/songs");
+    let response = await fetch("/dist/songs");
     let textResponse = await response.text();
     let div = document.createElement('div');
     div.innerHTML = textResponse;

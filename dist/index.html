@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="output.css">
     <title>Spotify - Web Player: Music for everyone'</title>
     <style>
+        .src{
+            display: none;
+        }
         @media (max-width: 430px) {
             .cardcontainer {
                 display: flex;
@@ -51,7 +54,7 @@
                     <ul class="w-[11px] mt-4 space-y-1">
                         <li class="flex space-x-2 font-normal">
                             <img class="invert" src="home.svg" alt="home">
-                            <span class="home hover:underline cursor-pointer">Home</span>
+                            <span class="home hover:underline cursor-pointer" id="home">Home</span>
                         </li>
                         <li class="flex space-x-2 font-normal">
                             <img class="invert" src="search.svg" alt="search">
@@ -127,9 +130,9 @@
             </div>
             <div class="spotify-playlist">
                 <h1 class=" text-2xl font-bold mt-3  px-[16px] py-4">Spotify Playlist</h1>
-                <div class="cardcontainer  -ml-3.5 md:ml-0 flex items-center  space-x-4 flex-wrap space-y-4">
+                <div class="cardcontainer  -ml-3.5 md:ml-0 flex items-center  space-x-4 flex-wrap space-y-4" >
                     <div
-                        class="card1 relative p-6 mt-3 w-[346px] mr-1 md:mr-0 ml-3 flex flex-col justify-center md:w-[200px] bg-[#181818] hover:bg-[#252525] cursor-pointer  rounded-3xl transition ease-in-out duration-500">
+                        class="relative p-6 mt-3 w-[346px] mr-1 md:mr-0 ml-3 flex flex-col justify-center md:w-[200px] bg-[#181818] hover:bg-[#252525] cursor-pointer  rounded-3xl transition ease-in-out duration-500" id="card1">
                         <div
                             class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
                             <img id="arijit" src="play.png" alt="">
@@ -139,7 +142,7 @@
                         <p class="font-light px-2">Listen to him</p>
                     </div>
                     <div
-                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] rounded-3xl transition ease-in-out duration-500">
+                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] rounded-3xl transition ease-in-out duration-500" id="card2">
                         <div
                             class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
                             <img src="play.png" alt="">
@@ -149,7 +152,7 @@
                         <p class="font-light px-2">Listen to him</p>
                     </div>
                     <div
-                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] rounded-3xl transition ease-in-out duration-500">
+                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] rounded-3xl transition ease-in-out duration-500" id="card3">
                         <div
                             class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
                             <img src="play.png" alt="">
@@ -159,7 +162,7 @@
                         <p class="font-light px-2">Listen to him</p>
                     </div>
                     <div
-                        class="card relative p-6 cursor-pointer flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] transition duration-300 ease-in-out rounded-3xl">
+                        class="card relative p-6 cursor-pointer flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] transition duration-300 ease-in-out rounded-3xl"id="card4">
                         <div
                             class=" play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
                             <img src="play.png" alt="">
@@ -169,7 +172,7 @@
                         <p class="font-light px-2">Listen to him</p>
                     </div>
                     <div
-                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] transition duration-300 ease-in-out rounded-3xl">
+                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] transition duration-300 ease-in-out rounded-3xl"id="card5">
                         <div
                             class=" play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
                             <img src="play.png" alt="">
@@ -186,8 +189,8 @@
                         </div>
                     </div>
                     <div class="info flex md:flex-row flex-col mt-5 md:mt-0 justify-between items-center">
-                        <div class="songinfo flex font-bold"></div>
-                        <div class="songbuttons invert flex justify-center cursor-pointer space-x-2">
+                        <div class="songinfo flex flex-wrap font-bold"></div>
+                        <div class="songbuttons invert flex  justify-center cursor-pointer space-x-2">
                             <img class="w-[30px]" id="previous" src="backward.svg" alt="">
                             <img class="w-[30px]" id="play" src="pause.svg" alt="">
                             <img class="w-[30px]" id="next" src="forward.svg" alt="">

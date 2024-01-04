@@ -21,7 +21,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder='ncs') {
     currFolder = folder;
-    let a = await fetch(`songs/${folder}/`)
+    let a = await fetch(`/songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -114,11 +114,16 @@ async function main() {
      // Add an event listener for hamburger
      document.querySelector(".hamburger").addEventListener("click", () => {
         document.querySelector(".left").style.left = "0"
+        document.querySelector(".right").style.opacity = "0";
+        document.querySelector(".right").style.position = "fixed";
+
     })
     
      // Add an event listener for close button
      document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-120%"
+        document.querySelector(".right").style.opacity = "100";
+        document.querySelector(".right").style.position = "static";
     })
 
    
@@ -148,6 +153,13 @@ async function main() {
         let url = `songs/${currFolder}/${newsong}`
         playMusic(url)
     })
+    
+
+}
+function openham(){
+    document.querySelector(".left").style.left = "0"
+    document.querySelector(".right").style.opacity = "0";
+    document.querySelector(".right").style.position = "fixed";
 
 }
 
@@ -158,6 +170,8 @@ async function displayAlbum(){
     
     card1.addEventListener('click',()=>{
         getSongs('arijit')
+        openham()
+
     })
     card2.addEventListener('click',()=>{
         getSongs('rahat')

@@ -176,8 +176,6 @@ async function displayAlbum(){
     
 
 }
-
-displayAlbum()
-
 getSongs()
+displayAlbum()
 main()

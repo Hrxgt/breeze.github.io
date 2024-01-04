@@ -21,7 +21,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder='ncs') {
     currFolder = folder;
-    let a = await fetch(`dist/songs/${folder}/`)
+    let a = await fetch(`songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -62,7 +62,7 @@ async function getSongs(folder='ncs') {
         e.addEventListener("click", element => {
             let address = (e.querySelector(".info").firstElementChild.innerHTML.trim()).replaceAll(' ','%20')
             console.log(address)
-            let url = `http://127.0.0.1:5500/dist/songs/${currFolder}/${address}`
+            let url = `songs/${currFolder}/${address}`
             console.log(url)
             playMusic(url)
 
@@ -132,7 +132,7 @@ async function main() {
         }
         let newsong = songs[index-1]
         console.log(newsong)
-        let url = `http://127.0.0.1:5500/dist/songs/${currFolder}/${newsong}`
+        let url = `songs/${currFolder}/${newsong}`
         playMusic(url)
     })
 
@@ -145,7 +145,7 @@ async function main() {
         }
         let newsong = songs[index+1]
         console.log(newsong)
-        let url = `http://127.0.0.1:5500/dist/songs/${currFolder}/${newsong}`
+        let url = `songs/${currFolder}/${newsong}`
         playMusic(url)
     })
 

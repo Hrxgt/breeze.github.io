@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/output.css">
+    <title>Spotify - Web Player: Music for everyone'</title>
+    <style>
+        .src{
+            display: none;
+        }
+        @media (max-width: 430px) {
+            .cardcontainer {
+                display: flex;
+                justify-content: center;
+                margin-top: 35px;
+            }
+
+            .cardcontainer>.card {
+                width: 550px;
+
+            }
+        }
+
+        @media (max-width: 1412px) {
+            .left {
+                width: 95vw;
+                position: absolute;
+                left: -100%;
+                transition: all .3s;
+                z-index: 1;
+
+            }
+
+            .right {
+                width: 100vw;
+            }
+
+            .playbar {
+                width: 95vw;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <div class="container flex  mx-0 my-0 px-0 ">
+
+        <div class="left w-[20vw] p-[10px] m-3 text-white border  ">
+            <div class="Home flex justify-between home p-[10px] bg-[#121212] rounded-md mb-1 ">
+                <div>
+                    <img class="invert w-[100px]" src="assets/logo.svg" alt="">
+                    <ul class="w-[11px] mt-4 space-y-1">
+                        <li class="flex space-x-2 font-normal">
+                            <img class="invert" src="assets/home.svg" alt="home">
+                            <span class="home hover:underline cursor-pointer" id="home">Home</span>
+                        </li>
+                        <li class="flex space-x-2 font-normal">
+                            <img class="invert" src="assets/search.svg" alt="search">
+                            <span class="hover:underline cursor-pointer">Search</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="close cursor-pointer invert w-10 xl:hidden"><img src="assets/cross.svg" alt=""></div>
+            </div>
+
+            <div class="library relative min-h-[82vh] p-[10px] bg-[#121212] space-y-96 rounded-md">
+                <div class="header flex flex-col justify-center space-y-7 ">
+                    <div class="flex space-x-2">
+                        <img class="w-[14px] invert" src="assets/playlist.svg" alt="playlist">
+                        <span>Your Playlist</span>
+                    </div>
+
+                    <div
+                        class="songlist overflow-auto h-[514px] scrollbar-thin scrolln scrollbar-track-[#2b2424]  scrollbar-thumb-[#474545]   text-sm ">
+                        <ul class="list space-y-2 mr-2">
+                            <!-- <li class="flex  justify-between">
+                                <div class="flex space-x-2 ">
+                                    <img class="invert w-4 " src="music.svg" alt="">
+                                    <div class="info text-xs space-y-1">
+                                        <div>songname</div>
+                                        <div>artist</div>
+                                    </div>
+                                </div>
+                                <div class="playnow flex text-xs items-center space-x-1">
+                                    <div>Play</div>
+                                    <img class="invert w-4" src="playnow.svg" alt="">
+                                </div>
+                               
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer absolute bottom-0  text-sm mr-2 text-gray-300 ">
+                    <div class="flex  flex-wrap  justify-evenly space-y-3 space-x-3">
+                        <div class="mx-3 mt-3"><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
+                        <div><a href="https://www.spotify.com/jp/privacy/"><span>Privacy Center</span></a></div>
+                        <div><a href="https://www.spotify.com/jp/legal/privacy-policy/'"><span>Privacy Policy</span></a>
+                        </div>
+                        <div><a href="https://www.spotify.com/jp/legal/cookies-policy/"><span>Cookies</span></a></div>
+                        <div><a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"><span>About Ads</span></a>
+                        </div>
+                        <div><a href="https://www.spotify.com/jp/accessibility/"><span>Accessibility</span></a></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="right w-[80vw] p-[10px] mt-6 -mr-40 rounded-md to-black relative">
+            <div class="header bg-[#181818] p-2 rounded-lg">
+                <div class="nav flex justify-between">
+                    <div class="menu flex p-2 space-x-8">
+                        <div class="hamburger cursor-pointer invert ml-1 xl:hidden xl:ml-0">
+                            <img class="w-9" src="assets/hamburger.svg" alt="">
+                        </div>
+                        <div class="flex w-4 md:w-5 space-x-2 ">
+                            <img class="invert" src="assets/aleft.svg" alt="">
+                            <img class="invert" src="assets/aright.svg" alt="">
+                        </div>
+                    </div>
+
+
+                    <div class="button space-x-3">
+                        <button class="signup p-2 text-gray-300 hover:text-white">Signup</button>
+                        <button class="login text-black bg-white rounded-3xl px-4 py-2 my-1 anim">Login</button>
+                    </div>
+                </div>
+            </div>
+            <div class="spotify-playlist">
+                <h1 class=" text-2xl font-bold mt-3  px-[16px] py-4">Spotify Playlist</h1>
+                <div class="cardcontainer  -ml-3.5 md:ml-0 flex items-center  space-x-4 flex-wrap space-y-4" >
+                    <div
+                        class="relative p-6 mt-3 w-[346px] mr-1 md:mr-0 ml-3 flex flex-col justify-center md:w-[200px] bg-[#181818] hover:bg-[#252525] cursor-pointer  rounded-3xl transition ease-in-out duration-500" id="card1">
+                        <div
+                            class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
+                            <img id="arijit" src="assets/play.png" alt="">
+                        </div>
+                        <img class="rounded-lg  duration-200" src="assets/arijit.jpeg" alt="">
+                        <h2 class="text-lg p-2">Arijit Singh</h2>
+                        <p class="font-light px-2">Listen to him</p>
+                    </div>
+                    <div
+                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] rounded-3xl transition ease-in-out duration-500" id="card2">
+                        <div
+                            class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
+                            <img src="assets/play.png" alt="">
+                        </div>
+                        <img class="rounded-lg" src="assets/rahat.jpg" alt="">
+                        <h2 class="text-lg p-2">Rahat Fateh A.</h2>
+                        <p class="font-light px-2">Listen to him</p>
+                    </div>
+                    <div
+                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] rounded-3xl transition ease-in-out duration-500" id="card3">
+                        <div
+                            class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
+                            <img src="assets/play.png" alt="">
+                        </div>
+                        <img class="rounded-lg" src="assets/sonu.jpeg" alt="">
+                        <h2 class="text-lg p-2">Sonu Nigam</h2>
+                        <p class="font-light px-2">Listen to him</p>
+                    </div>
+                    <div
+                        class="card relative p-6 cursor-pointer flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] transition duration-300 ease-in-out rounded-3xl"id="card4">
+                        <div
+                            class=" play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
+                            <img src="assets/play.png" alt="">
+                        </div>
+                        <img class="rounded-lg" src="assets/kishore.jpeg" alt="">
+                        <h2 class="text-lg p-2">Kishore Kumar</h2>
+                        <p class="font-light px-2">Listen to him</p>
+                    </div>
+                    <div
+                        class="card relative cursor-pointer p-6 flex flex-col justify-center w-[200px] bg-[#181818] hover:bg-[#252525] transition duration-300 ease-in-out rounded-3xl"id="card5">
+                        <div
+                            class=" play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
+                            <img src="assets/play.png" alt="">
+                        </div>
+                        <img class="rounded-lg" src="assets/jubin.jpg" alt="">
+                        <h2 class="text-lg p-2">Jubin Nautiyal</h2>
+                        <p class="font-light px-2">Listen to him</p>
+                    </div>
+                </div>
+                <div
+                    class="playbar bottom-1 fixed md:bottom-5 bg-black md:bg-[#214859] bg-opacity-75 md:bg-opacity-75 rounded-xl h-[130px] md:h-14 p-[12px] w-[78%]">
+                    <div class="seekbar absolute rounded-xl bottom-1 h-[5px] bg-white w-[98%] cursor-pointer">
+                        <div class="circle absolute invert -top-1.5 -left-1 h-[15px] w-[15px] rounded-full bg-black">
+                        </div>
+                    </div>
+                    <div class="info flex md:flex-row flex-col mt-5 md:mt-0 justify-between items-center">
+                        <div class="songinfo flex flex-wrap font-bold"></div>
+                        <div class="songbuttons invert flex  justify-center cursor-pointer space-x-2">
+                            <img class="w-[30px]" id="previous" src="assets/backward.svg" alt="">
+                            <img class="w-[30px]" id="play" src="assets/pause.svg" alt="">
+                            <img class="w-[30px]" id="next" src="assets/forward.svg" alt="">
+                        </div>
+                        <div class="flex justify-between space-x-7">
+                            <div class="songtime flex flex-col"></div>
+                            <div class="volume cursor-pointer hover: invert float-right">
+                                <!-- <img src="volume.svg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>

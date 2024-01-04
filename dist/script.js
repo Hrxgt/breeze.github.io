@@ -21,10 +21,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder='ncs') {
     currFolder = folder;
-    const baseUrl = 'https://hrxgt.github.io/breeze.github.io';
-    let a = await fetch(`${baseUrl}/dist/songs/${folder}/`);
-
-    // let a = await fetch(`songs/${folder}/`)
+    let a = await fetch(`/songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;

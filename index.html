@@ -10,15 +10,33 @@
         .src{
             display: none;
         }
+        .playbar{
+            background-color:#253131 ;
+        }
         @media (max-width: 430px) {
             .cardcontainer {
                 display: flex;
                 justify-content: center;
                 margin-top: 35px;
             }
+            .songtime{
+                margin-left: 24px;
+            
+            }
+            .right{
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .arijit{
+                width: 100vw;
+                margin-left: 16px;
+                margin-right: 0;
+            }
 
             .cardcontainer>.card {
-                width: 550px;
+                width: 100vw;
+                margin-left: 0;
+                margin-right: 0;
 
             }
         }
@@ -132,7 +150,7 @@
                 <h1 class=" text-2xl font-bold mt-3  px-[16px] py-4">Spotify Playlist</h1>
                 <div class="cardcontainer  -ml-3.5 md:ml-0 flex items-center  space-x-4 flex-wrap space-y-4" >
                     <div
-                        class="relative p-6 mt-3 w-[346px] mr-1 md:mr-0 ml-3 flex flex-col justify-center md:w-[200px] bg-[#181818] hover:bg-[#252525] cursor-pointer  rounded-3xl transition ease-in-out duration-500" id="card1">
+                        class=" arijit relative p-6 mt-3 w-[346px] mr-1 md:mr-0 ml-3 flex flex-col justify-center md:w-[200px] bg-[#181818] hover:bg-[#252525] cursor-pointer  rounded-3xl transition ease-in-out duration-500" id="card1">
                         <div
                             class="play absolute w-10 top-[360px] right-[30px] md:top-[168px] md:right-[17px] md:opacity-0  hover:animation-ease-in hover:opacity-100">
                             <img id="arijit" src="assets/play.png" alt="">
@@ -183,7 +201,7 @@
                     </div>
                 </div>
                 <div
-                    class="playbar bottom-1 fixed md:bottom-5 bg-black md:bg-[#214859] bg-opacity-75 md:bg-opacity-75 rounded-xl h-[130px] md:h-14 p-[12px] w-[78%]">
+                    class="playbar bottom-1 fixed md:bottom-5  bg-opacity-75 md:bg-opacity-75 rounded-xl h-[130px] md:h-14 p-[12px] w-[78%]">
                     <div class="seekbar absolute rounded-xl bottom-1 h-[5px] bg-white w-[98%] cursor-pointer">
                         <div class="circle absolute invert -top-1.5 -left-1 h-[15px] w-[15px] rounded-full bg-black">
                         </div>
@@ -195,7 +213,7 @@
                             <img class="w-[30px]" id="play" src="assets/pause.svg" alt="">
                             <img class="w-[30px]" id="next" src="assets/forward.svg" alt="">
                         </div>
-                        <div class="flex justify-between space-x-7">
+                        <div class="flex justify-between space-x-7 ml-5">
                             <div class="songtime flex flex-col"></div>
                             <div class="volume cursor-pointer hover: invert float-right">
                                 <!-- <img src="volume.svg" alt=""> -->

@@ -21,7 +21,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder='ncs') {
     currFolder = folder;
-    let a = await fetch(`/songs/${folder}/`)
+    let a = await fetch(`songs/${currFolder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -170,8 +170,10 @@ async function displayAlbum(){
     
     card1.addEventListener('click',()=>{
         getSongs('arijit')
-        openham()
-
+         // Check if the viewport width is below a certain threshold (e.g., 768 pixels)
+    if (window.innerWidth < 768) {
+        openham();
+    }
     })
     card2.addEventListener('click',()=>{
         getSongs('rahat')

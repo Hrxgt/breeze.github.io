@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/output.css">
     <title>Spotify - Web Player: Music for everyone'</title>
     <style>
+        .seekbar{
+            background-color: rgb(208, 174, 23);
+        }
         .src{
             display: none;
         }
@@ -14,6 +17,9 @@
             background-color:#253131 ;
         }
         @media (max-width: 430px) {
+            .left{
+                height: 100vw;
+            }
             .cardcontainer {
                 display: flex;
                 justify-content: center;
@@ -22,6 +28,9 @@
             .songtime{
                 margin-left: 24px;
             
+            }
+            .songlist{
+                height: 420px;
             }
             .right{
                 margin-left: 0;
@@ -112,14 +121,14 @@
                 </div>
                 <div class="footer absolute bottom-0  text-sm mr-2 text-gray-300 ">
                     <div class="flex  flex-wrap  justify-evenly space-y-3 space-x-3">
-                        <div class="mx-3 mt-3"><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
-                        <div><a href="https://www.spotify.com/jp/privacy/"><span>Privacy Center</span></a></div>
-                        <div><a href="https://www.spotify.com/jp/legal/privacy-policy/'"><span>Privacy Policy</span></a>
+                        <div class="mx-3 mt-3">Legal</div>
+                        <div>Privacy Center</div>
+                        <div>Privacy Policy</a>
                         </div>
-                        <div><a href="https://www.spotify.com/jp/legal/cookies-policy/"><span>Cookies</span></a></div>
-                        <div><a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"><span>About Ads</span></a>
+                        <div><span>Cookies</div>
+                        <div>About Ads
                         </div>
-                        <div><a href="https://www.spotify.com/jp/accessibility/"><span>Accessibility</span></a></div>
+                        <div>Accessibility</div>
                     </div>
                 </div>
             </div>

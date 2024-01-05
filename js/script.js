@@ -39,7 +39,7 @@ async function getSongs(folder='ncs') {
    
     for (const song of songs) {
         songname = song.split('-')[0].replaceAll('%20',' ')
-        artist = song.split('-')[1].replace('.mp3','').replaceAll('%20','') 
+        artist = song.split('-')[1].replace('.mp3','').replaceAll('%20',' ') 
         songUL.innerHTML = songUL.innerHTML + `<li class="flex  justify-between">
         <div class="flex space-x-2 ">
             <img class="invert w-4 " src="assets/music.svg" alt="">
@@ -170,24 +170,35 @@ async function displayAlbum(){
     
     card1.addEventListener('click',()=>{
         getSongs('arijit')
-         // Check if the viewport width is below a certain threshold (e.g., 768 pixels)
     if (window.innerWidth < 768) {
         openham();
     }
     })
     card2.addEventListener('click',()=>{
         getSongs('rahat')
+    if (window.innerWidth < 768) {
+        openham();
+     }
     })
     card3.addEventListener('click',()=>{
         getSongs('sonu')
+     if (window.innerWidth < 768) {
+        openham();
+    }
     })
     
     card4.addEventListener('click',()=>{
         getSongs('kishore')
+    if (window.innerWidth < 768) {
+        openham();
+    }
     })
     
     card5.addEventListener('click',()=>{
         getSongs('jubin')
+    if (window.innerWidth < 768) {
+        openham();
+    }
     })
     
 

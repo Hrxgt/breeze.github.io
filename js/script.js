@@ -18,6 +18,12 @@ function secondsToMinutesSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 } 
 
+function openham(){
+    document.querySelector(".left").style.left = "0"
+    document.querySelector(".right").style.opacity = "0";
+    document.querySelector(".right").style.position = "fixed";
+
+}
 
 async function getSongs(folder='ncs') {
     currFolder = folder;
@@ -153,21 +159,9 @@ async function main() {
         let url = `songs/${currFolder}/${newsong}`
         playMusic(url)
     })
-    
-
-}
-function openham(){
-    document.querySelector(".left").style.left = "0"
-    document.querySelector(".right").style.opacity = "0";
-    document.querySelector(".right").style.position = "fixed";
-
-}
-
-async function displayAlbum(){
     home.addEventListener('click',()=>{
         getSongs()
     })
-    
     card1.addEventListener('click',()=>{
         getSongs('arijit')
     if (window.innerWidth < 768) {
@@ -200,9 +194,11 @@ async function displayAlbum(){
         openham();
     }
     })
+
     
 
 }
+
 getSongs()
-displayAlbum()
+
 main()
